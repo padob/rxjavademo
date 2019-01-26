@@ -7,6 +7,7 @@ import org.junit.Test;
 import static java.util.Arrays.asList;
 
 public class ObserversTest {
+    static int b = 10;
 
     @Test
     public void basicObserver_2_6() {
@@ -142,6 +143,24 @@ public class ObserversTest {
 //        Observable.fromFuture(futureValue)
 //                  .map(String::length)
 //                  .subscribe(System.out::println);
+    }
+
+    @Test
+    public void basicObserver_without_defer_factory() {
+        int a = 0, b = 4;
+        Observable<Integer> source = Observable.range(a, b);
+        source.subscribe(System.out::println);
+        b = 15;
+        source.subscribe(System.out::println);
+    }
+
+    @Test
+    public void basicObserver_with_defer_factory() {
+        int a = 0;
+        Observable<Integer> source = Observable.defer(() -> Observable.range(a, b));
+        source.subscribe(System.out::println);
+        b = 15;
+        source.subscribe(System.out::println);
     }
 
     @Test
