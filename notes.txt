@@ -1,0 +1,4 @@
+observable interface
+   onNext
+   onComplete
+   onError - gdy w onNext wystapi blad
