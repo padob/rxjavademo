@@ -2,3 +2,6 @@ observable interface
    onNext
    onComplete
    onError - gdy w onNext wystapi blad
+
+Completable.fromRunnable() - wywołuje się przed onComplete, nic nie zwraca, jej zadaniem jest coś wykonać. Dobra do testowania
+dispose() - zatrzymuje wykonywanie zasubskrybowanego streama
